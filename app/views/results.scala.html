@@ -1,0 +1,15 @@
+@(query: String, lists: java.util.Map[String, List[String]])
+
+@main(query) {
+	@query
+
+	@lists.size()
+
+	<ul>
+	@for(list <- lists.values()) {
+		@for(s <- list) {
+			<li> @s </li>
+		}
+	} 
+	</ul>
+}
