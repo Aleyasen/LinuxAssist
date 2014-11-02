@@ -1,0 +1,7 @@
+stackoverflow.com	code	0.9
+cyberciti.biz	code	0.8
+superuser.com	code	
+thegeekstuff.com	pre
+tecmint.com	pre
+howtogeek.com	blockquote
+unix.stackexchange.com	code
