@@ -7,22 +7,40 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Source {
-
+	
 	protected String url;
 	protected String codeSelector;
 	protected double weight;
-	protected String scoreSelector;
+	protected String voteSelector;
 	protected String answerSelector;
 
 	public Source() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Source(String url, String selector) {
+	public Source(String url, String codeSelector) {
 		super();
 		this.url = url;
-		this.codeSelector = selector;
+		this.codeSelector = codeSelector;
 	}
+	
+	public Source(String url, String codeSelector, String voteSelector) {
+		super();
+		this.url = url;
+		this.codeSelector = codeSelector;
+		this.voteSelector = voteSelector;
+		
+	}
+	
+	public Source(String url, String codeSelector, String voteSelector, String answerSelector) {
+		super();
+		this.url = url;
+		this.codeSelector = codeSelector;
+		this.voteSelector = voteSelector;
+		this.answerSelector = answerSelector;
+		
+	}
+	
 
 	public String getUrl() {
 		return url;
@@ -32,14 +50,22 @@ public class Source {
 		this.url = url;
 	}
 
-	public String getScoreSelector() {
-		return scoreSelector;
+	public String getCodeSelector() {
+		return codeSelector;
 	}
 
-	public void setScoreSelector(String scoreSelector) {
-		this.scoreSelector = scoreSelector;
+	public void setSelector(String codeSelector) {
+		this.codeSelector = codeSelector;
 	}
 
+	public String getVoteSelector() {
+		return voteSelector;
+	}
+
+	public void setVoteSelector(String voteSelector) {
+		this.voteSelector = voteSelector;
+	}
+	
 	public String getAnswerSelector() {
 		return answerSelector;
 	}
@@ -47,21 +73,21 @@ public class Source {
 	public void setAnswerSelector(String answerSelector) {
 		this.answerSelector = answerSelector;
 	}
-
-	public String getCodeSelector() {
-		return codeSelector;
-	}
-
-	public void setCodeSelector(String codeSelector) {
-		this.codeSelector = codeSelector;
-	}
-
+	
 	public double getWeight() {
 		return weight;
 	}
 
 	public void setWeight(double weight) {
 		this.weight = weight;
+	}
+	
+	public void print(){
+		System.out.println ("url" + ": " + url);
+		System.out.println ("codeSelector" + ": " + codeSelector);
+		System.out.println ("voteSelector" + ": " + voteSelector);
+		System.out.println ("answerSelector" + ": " + answerSelector);
+		System.out.println ("weight" + ": " + weight);
 	}
 
 	public static List<Source> ReadSourcesFromFile(String inputFile) {
@@ -75,13 +101,15 @@ public class Source {
 
 			while (line != null) {
 				String[] split = line.split("\\t");
-				if (split.length < 2) {
+				if (split.length < 4) {
 					line = br.readLine();
 					continue;
 				}
 				String url = split[0];
-				String selector = split[1];
-				Source src = new Source(url, selector);
+				String codeSelector = split[1];
+				String voteSelector = split[2];
+				String answerSelector = split[3];
+				Source src = new Source(url, codeSelector, voteSelector, answerSelector);
 				sources.add(src);
 				line = br.readLine();
 			}
