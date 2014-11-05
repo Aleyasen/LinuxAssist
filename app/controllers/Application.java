@@ -23,7 +23,7 @@ public class Application extends Controller {
     public static Result results(String query) throws IOException {
 		
 		System.out.println("Searching for \"" + query + "\"");
-		Map<String, List<String>> lists = Search.search(query, sources);
+		Map<String, List<Answer>> lists = Search.search(query, sources, 0.5);
 
 		Search.printLists(lists);
 
