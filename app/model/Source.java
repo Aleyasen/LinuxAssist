@@ -90,6 +90,11 @@ public class Source {
 		System.out.println ("weight" + ": " + weight);
 	}
 
+	@Override
+	public String toString() {
+		return this.url;
+	}
+
 	public static List<Source> ReadSourcesFromFile(String inputFile) {
 		List<Source> sources = new ArrayList<Source>();
 		try {
@@ -101,14 +106,18 @@ public class Source {
 
 			while (line != null) {
 				String[] split = line.split("\\t");
-				if (split.length < 4) {
-					line = br.readLine();
-					continue;
+				String url = null, codeSelector = null, voteSelector=null, answerSelector=null;
+				if (split.length == 2) {
+					url = split[0];
+					codeSelector = split[1];
+					
+				} else if (split.length == 4) {
+					url = split[0];
+					codeSelector = split[1];
+					voteSelector = split[2];
+					answerSelector = split[3];	
 				}
-				String url = split[0];
-				String codeSelector = split[1];
-				String voteSelector = split[2];
-				String answerSelector = split[3];
+
 				Source src = new Source(url, codeSelector, voteSelector, answerSelector);
 				sources.add(src);
 				line = br.readLine();
@@ -119,6 +128,9 @@ public class Source {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
+		System.out.println(sources);
+
 		return sources;
 	}
 }

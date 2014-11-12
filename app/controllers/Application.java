@@ -17,6 +17,8 @@ public class Application extends Controller {
 
 
     public static Result search() {
+        if (false) System.exit(0);
+
     	return ok(search.render());
     }
 

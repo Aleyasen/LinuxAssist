@@ -65,9 +65,9 @@ public class Search {
 				
 				// change here to delete similar codes
 				for (Answer answer: answers){
-					if (!Parser.haveSimilarCode(lists, answer, threshold)){
+					// if (!Parser.haveSimilarCode(lists, answer, threshold)){
 						 lists.get(src.getUrl()).add(answer);
-					}
+					// }
 				}
 				// what I changed
 			} else {
