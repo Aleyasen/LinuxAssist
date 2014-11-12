@@ -26,7 +26,6 @@ public class Application extends Controller {
 		Map<String, List<Answer>> lists = Search.search(query, sources, 0.5);
 
 		List<Answer> all = new ArrayList<Answer>();
-
         int total = 0;
 
         for (List<Answer> sub : lists.values()) {
