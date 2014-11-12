@@ -28,5 +28,6 @@ public class Application extends Controller {
 		Search.printLists(lists);
 
 		return ok(results.render(query, lists));
+		
     }
 }

@@ -47,7 +47,7 @@ public class Search {
 	
 	//Return a Map lists, mapping each URL to its list of answers.
 	//Parameters: query String, list of sources, threshold
-	private static Map<String, List<Answer>> search(String query, List<Source> sources, double threshold) throws IOException {
+	public static Map<String, List<Answer>> search(String query, List<Source> sources, double threshold) throws IOException {
 		Map<String, List<Answer>> lists = new HashMap<String, List<Answer>>();
 		for (Source src : sources) {
 			lists.put(src.getUrl(), new ArrayList<Answer>());
