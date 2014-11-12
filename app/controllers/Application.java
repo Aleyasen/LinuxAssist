@@ -25,8 +25,20 @@ public class Application extends Controller {
 		System.out.println("Searching for \"" + query + "\"");
 		Map<String, List<Answer>> lists = Search.search(query, sources, 0.5);
 
-		Search.printLists(lists);
+		List<Answer> all = new ArrayList<Answer>();
 
-		return ok(results.render(query, lists));
+        int total = 0;
+
+        for (List<Answer> sub : lists.values()) {
+            all.addAll(sub);
+
+            total += sub.size();
+        }        
+
+        Collections.sort(all);
+
+        System.out.println("Found: " + total + " results.");
+
+		return ok(results.render(query, all));
     }
 }

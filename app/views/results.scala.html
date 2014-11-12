@@ -1,4 +1,4 @@
-@(query: String, lists: java.util.Map[String, List[String]])
+@(query: String, list: java.util.List[model.Answer])
 
 @main(query) {
 	<nav class="navbar navbar-default" role="navigation">
@@ -21,14 +21,12 @@
 	
 
 	<div class="col-md-8 col-md-offset-2">
-		<h2><b>Linux Assist</b> found a total of @lists.size() results for @query.</h2>
+		<h2><b>Linux Assist</b> found a total of @list.size() results for @query.</h2>
 
 		<ul class="list-group" >
-		@for(list <- lists.values()) {
 			@for(s <- list) {
-				<li class="list-group-item"><code> @s </code></li>
-			}
-		} 
+				<li class="list-group-item"><code> @s.getCode() </code></li>
+			} 
 		</ul>
 	</div>
 }
