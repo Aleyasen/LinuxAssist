@@ -1,1 +1,6 @@
-Q1	readin a text file line by line
+Q1	find total disk space used personally by the current user
+Q2	terminate the process using its name
+Q3	format a partition
+Q4	How do I zip/unzip on the unix command line?
+Q5	Repeat a Unix command every x seconds forever
+Q6	How to determine Linux kernel architecture?
