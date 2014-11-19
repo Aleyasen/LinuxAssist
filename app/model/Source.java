@@ -6,7 +6,16 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.mongodb.*;
+
+import java.util.Set;
+
 public class Source {
+	
+	MongoClient mongo = new MongoClient( "localhost" , 27017 );
+	DB db = mongo.getDB("testdb");
+	DBCollection table = db.getCollection("sources");
+	DBCursor cursor = table.find();
 	
 	protected String url;
 	protected String codeSelector;
@@ -119,6 +128,13 @@ public class Source {
 				}
 
 				Source src = new Source(url, codeSelector, voteSelector, answerSelector);
+				
+				//mongoDB
+				BasicDBObject document = new BasicDBObject();
+				document.put("source", url);
+				document.put("code selector", codeSelector);
+				table.insert(document);
+				
 				sources.add(src);
 				line = br.readLine();
 			}
