@@ -9,13 +9,26 @@ import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.mongodb.*;
+
 public class Source {
 	
-	MongoClient mongo = new MongoClient( "localhost" , 27017 );
-	DB db = mongo.getDB("testdb");
-	DBCollection table = db.getCollection("sources");
-	DBCursor cursor = table.find();
+	static MongoClient mongo;
+	static DB db;
+	static DBCollection table;
+	static DBCursor cursor;
 	
+	static {
+		try {
+			mongo = new MongoClient( "localhost" , 27017 );
+			db = mongo.getDB("testdb");
+			table = db.getCollection("sources");
+			cursor = table.find();
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+
 	protected String url;
 	protected String codeSelector;
 	protected double weight;

@@ -4,7 +4,7 @@ import java.util.*;
 
 //class Answer to store code and its vote
 //public class Answer implements Comparable<Answer> {
-public class Answer {
+public class Answer implements Comparable<Answer> {
 	protected String code;
 	protected int vote;
 
@@ -39,19 +39,17 @@ public class Answer {
 			System.out.println(code + " (vote:" + vote + ")");
 	}
 
-	
-	/**
+		
 	@Override
 	public int compareTo(Answer other) {
-		if ("None".equals(this.vote)) {
+		if (-1 == this.vote) {
+			return 1;
+		}
+
+		if (-1 == other.vote) {
 			return -1;
 		}
 
-		if ("None".equals(other.vote)) {
-			return -1;
-		}
-
-		return this.vote.compareTo(other.vote);
-	}
-	**/
+		return this.vote - (other.vote);
+	}	
 }

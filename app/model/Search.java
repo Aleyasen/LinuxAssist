@@ -1,7 +1,7 @@
 package model;
 
 import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -27,7 +27,7 @@ public class Search {
 		
 		double threshold = 0.8;
 		int limit = 10;
-		InputStream input = ResourceLoader.load("sources.txt");
+		InputStream input = new FileInputStream("others/sources.txt");
 		List<Source> sources = Source.ReadSourcesFromFile(input);
 		
 		
@@ -127,13 +127,12 @@ public class Search {
 	        }
 	    }
 	}
-	/**
-	public String convertStreamToString(InputStream input) { 
-	    // ???
+
+	// public String convertStreamToString(InputStream input) { 
+	//     // ???
 	
-		StringWriter writer = new StringWriter();
-		IOUtils.copy(input, writer, encoding);
-		String theString = writer.toString();
-	}
-	**/
+	// 	StringWriter writer = new StringWriter();
+	// 	IOUtils.copy(input, writer, encoding);
+	// 	String theString = writer.toString();
+	// }
 }

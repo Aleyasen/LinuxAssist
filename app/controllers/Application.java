@@ -7,9 +7,18 @@ import java.io.*;
 import java.util.*;
 import model.*;
 import views.html.*;
+import java.util.Collections;
 
 public class Application extends Controller {
-	private static final List<Source> sources = Source.ReadSourcesFromFile("others/sources.txt");
+	private static final List<Source> sources;
+
+    static {
+        try {
+            sources = Source.ReadSourcesFromFile(new FileInputStream("others/sources.txt"));
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     public static Result index() {
         return ok(index.render("Your new application is ready."));
@@ -25,7 +34,7 @@ public class Application extends Controller {
     public static Result results(String query) throws IOException {
 		
 		System.out.println("Searching for \"" + query + "\"");
-		Map<String, List<Answer>> lists = Search.search(query, sources, 0.5);
+		Map<String, List<Answer>> lists = Search.search(query, sources, 0.0, 10);
 
 		List<Answer> all = new ArrayList<Answer>();
         int total = 0;
