@@ -3,12 +3,11 @@ package model;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.List;
-
-import com.mongodb.*;
-
-import java.util.Set;
 
 public class Source {
 	
@@ -104,14 +103,21 @@ public class Source {
 		return this.url;
 	}
 
-	public static List<Source> ReadSourcesFromFile(String inputFile) {
+	public static List<Source> ReadSourcesFromFile(InputStream input) {
 		List<Source> sources = new ArrayList<Source>();
+		
 		try {
-			BufferedReader br = new BufferedReader(new FileReader(inputFile));
+			//BufferedReader br = new BufferedReader(new FileReader(inputFile));
+			//BufferedReader br = new BufferedReader(new FileReader(input));
+
+			BufferedReader br = new BufferedReader(new InputStreamReader(input));
+
 
 			StringBuilder sb = new StringBuilder();
 			String line;
 			line = br.readLine();
+			
+			
 
 			while (line != null) {
 				String[] split = line.split("\\t");
@@ -145,8 +151,17 @@ public class Source {
 			e.printStackTrace();
 		}
 
-		System.out.println(sources);
+		//System.out.println(sources);
 
 		return sources;
 	}
+	/**
+	public String convertStreamToString(InputStream input) { 
+	    // ???
+	
+		StringWriter writer = new StringWriter();
+		IOUtils.copy(input, writer, encoding);
+		String theString = writer.toString();
+	}
+	**/
 }
