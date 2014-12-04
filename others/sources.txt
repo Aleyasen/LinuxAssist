@@ -1,7 +1,7 @@
 stackoverflow.com	code	span.vote-count-post	div.answer
-cyberciti.biz	code	.	.
+cyberciti.biz	code
 superuser.com	code	span.vote-count-post	div.answer
-thegeekstuff.com	pre		.	.		
-tecmint.com	pre		.	.
-howtogeek.com	blockquote	.	.	
-unix.stackexchange.com	code	.	.		
+thegeekstuff.com	pre
+tecmint.com	pre
+howtogeek.com	blockquote
+unix.stackexchange.com	code	
